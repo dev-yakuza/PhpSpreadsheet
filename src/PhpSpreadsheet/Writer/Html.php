@@ -1306,7 +1306,8 @@ class Html extends BaseWriter
 
                     // General horizontal alignment: Actual horizontal alignment depends on dataType
                     $sharedStyle = $pSheet->getParent()->getCellXfByIndex($cell->getXfIndex());
-                    if ($sharedStyle->getAlignment()->getHorizontal() == Alignment::HORIZONTAL_GENERAL
+                    if (
+                        $sharedStyle->getAlignment()->getHorizontal() == Alignment::HORIZONTAL_GENERAL
                         && isset($this->cssStyles['.' . $cell->getDataType()]['text-align'])
                     ) {
                         $cssClass['text-align'] = $this->cssStyles['.' . $cell->getDataType()]['text-align'];
@@ -1610,7 +1611,7 @@ class Html extends BaseWriter
             foreach ($candidateSpannedRow as $rowIndex) {
                 if (isset($this->isSpannedCell[$sheetIndex][$rowIndex])) {
                     if (count($this->isSpannedCell[$sheetIndex][$rowIndex]) == $countColumns) {
-                        $this->isSpannedRow[$sheetIndex][$rowIndex] = $rowIndex;
+                        // $this->isSpannedRow[$sheetIndex][$rowIndex] = $rowIndex;
                     }
                 }
             }
